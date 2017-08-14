@@ -7,15 +7,19 @@ import { convertFromRaw, EditorState } from 'draft-js'
 import Editor, { composeDecorators } from 'draft-js-plugins-editor'
 
 // Plugins
-import createImagePlugin from 'draft-js-image-plugin';
 // eslint-disable-next-line import/no-unresolved
-import createFocusPlugin from 'draft-js-focus-plugin';
+import createImagePlugin from 'draft-js-image-plugin'
 // eslint-disable-next-line import/no-unresolved
-import createBlockDndPlugin from 'draft-js-drag-n-drop-plugin';
+import createVideoPlugin from 'draft-js-video-plugin'
+// eslint-disable-next-line import/no-unresolved
+import createFocusPlugin from 'draft-js-focus-plugin'
+// eslint-disable-next-line import/no-unresolved
+import createBlockDndPlugin from 'draft-js-drag-n-drop-plugin'
 // eslint-disable-next-line import/no-unresolved
 import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin'
 // eslint-disable-next-line import/no-unresolved
 import persistPlugin from '../plugins/persist'
+
 //Buttons
 import {
   ItalicButton,
@@ -37,6 +41,9 @@ import '../styles/editorStyles.css'
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css'
 import 'draft-js-image-plugin/lib/plugin.css'
 
+//Sample Data
+import initialState from '../sampleData'
+
 const focusPlugin = createFocusPlugin()
 const blockDndPlugin = createBlockDndPlugin();
 
@@ -44,7 +51,9 @@ const decorator = composeDecorators(
   focusPlugin.decorator,
   blockDndPlugin.decorator
 )
+
 const imagePlugin = createImagePlugin({ decorator })
+const videoPlugin = createVideoPlugin({ decorator })
 
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
@@ -69,51 +78,11 @@ const plugins = [
   blockDndPlugin,
   focusPlugin,
   imagePlugin,
+  videoPlugin,
   persistPlugin()
 ]
 
-/* eslint-disable */
-const initialState = {
-    "entityMap": {
-        "0": {
-            "type": "image",
-            "mutability": "IMMUTABLE",
-            "data": {
-                "src": "http://via.placeholder.com/350x150"
-            }
-        }
-    },
-    "blocks": [{
-        "key": "9gm3s",
-        "text": "You can have images in your text field which are draggable. Hover over the image press down your mouse button and drag it to another position inside the editor.",
-        "type": "unstyled",
-        "depth": 0,
-        "inlineStyleRanges": [],
-        "entityRanges": [],
-        "data": {}
-    }, {
-        "key": "ov7r",
-        "text": " ",
-        "type": "atomic",
-        "depth": 0,
-        "inlineStyleRanges": [],
-        "entityRanges": [{
-            "offset": 0,
-            "length": 1,
-            "key": 0
-        }],
-        "data": {}
-    }, {
-        "key": "e23a8",
-        "text": "You can checkout the alignment tool plugin documentation to see how to build a compatible block plugin …",
-        "type": "unstyled",
-        "depth": 0,
-        "inlineStyleRanges": [],
-        "entityRanges": [],
-        "data": {}
-    }]
-};
-/* eslint-enable */
+
 
 class DraftEditor extends Component {
   state = {
@@ -146,5 +115,8 @@ class DraftEditor extends Component {
 }
 
 export default DraftEditor
+
+
+
 
 

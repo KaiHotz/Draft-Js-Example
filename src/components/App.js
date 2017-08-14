@@ -9,7 +9,7 @@ class App extends Component {
       <div className='App'>
         <div className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
-          <h2>Draft Js Test</h2>
+          <h2>DraftJs with plugins Example</h2>
         </div>
         <DraftEditor />
       </div>
