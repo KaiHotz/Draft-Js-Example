@@ -1,0 +1,33 @@
+{
+  "name": "draftJs",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "draft-js": "^0.10.1",
+    "draft-js-alignment-plugin": "^2.0.0-beta1",
+    "draft-js-drag-n-drop-plugin": "^2.0.0-rc3",
+    "draft-js-focus-plugin": "^2.0.0-rc3",
+    "draft-js-image-plugin": "^2.0.0-rc3",
+    "draft-js-inline-toolbar-plugin": "^2.0.0-rc3",
+    "draft-js-plugins-editor": "^2.0.0-rc3",
+    "draft-js-resizeable-plugin": "^1.0.8",
+    "draft-js-video-plugin": "^2.0.0-beta.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2"
+  }
+}
